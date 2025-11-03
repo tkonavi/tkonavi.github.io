@@ -1,14 +1,14 @@
 let spots = [];
 let startPoints = [];
 
-fetch("json/spots.json")
+fetch("spots.json")
   .then((response) => response.json())
   .then((data) => {
     spots = data;
   })
   .catch((error) => console.error("spotsJSON読み込みエラー:", error));
 
-fetch("json/startpoints.json")
+fetch("startpoints.json")
   .then((response) => response.json())
   .then((data) => {
     startPoints = data;
@@ -90,15 +90,6 @@ function estimateTravelTime(distanceKm, mode = "walk") {
   return Math.round(hours * 60);
 }
 
-//function applyDistancePenalty(spots, startLat, startLng, penaltyRate = 1.0) {
-//return spots.map((spot) => {
-//const difference = getDistance(startLat, startLng, spot.lat, spot.lng);
-//const penalty = difference * penaltyRate;
-//const adjustedScore = spot.total - penalty;
-//return { ...spot, difference, adjustedScore };
-//});
-//}
-
 //自分のAPIキー
 const orsApiKey =
   "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjdjODA5OWI0MWQ3MzQ4YTZhNGU5ODE2ZjZlZThiNWIxIiwiaCI6Im11cm11cjY0In0=";
@@ -126,10 +117,7 @@ async function getTravelTimeORS(origin, destination) {
   );
   const data = await response.json();
   console.log(data);
-  //if (!data.features || data.features.length === 0) {
-  //console.error("ORS APIでルートが取得できません:", data);
-  //return null;
-  //}
+
   if (data.routes && data.routes.length > 0) {
     const durationSec = data.routes[0].summary.duration; // routes 配下の summary
     return Math.round(durationSec / 60); // 分
@@ -290,3 +278,4 @@ document.getElementById("generate").addEventListener("click", async () => {
 
   document.getElementById("result").innerHTML = html;
 });
+
