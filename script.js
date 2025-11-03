@@ -279,5 +279,5 @@ document.getElementById("generate").addEventListener("click", async () => {
 
   document.getElementById("result").innerHTML = html;
 });
-}
+});
 
