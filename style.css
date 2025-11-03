@@ -12,13 +12,19 @@ body {
   font-weight: bold;
 }
 
-h2 {
+.subtitle {
   font-size: 16pt;
   color: black;
   line-height: 0;
 }
 
-h3 {
+.heading {
+  font-size: 25pt;
+  color: black;
+  line-height: 1;
+}
+
+.spotname{
   font-size: 25pt;
   color: black;
   line-height: 0;
@@ -28,7 +34,7 @@ h3 {
   font-size:16pt;
 }
 
-p1 {
+p1{
   color: white;
 }
 p2 {
@@ -201,9 +207,9 @@ p2 {
   margin-right: 10px;
 }
 
-.travel-divider .travel-time {
+.travel-time {
   font-size: 16px;
-  color: #333;
+  color: black;
 }
 
 #map {
@@ -211,4 +217,101 @@ p2 {
   height: 400px;
   margin: 20px auto;
   border-radius: 10px;
+}
+
+/* --- スマートフォン・縦画面対応 --- */
+@media screen and (max-width: 768px) {
+
+  body {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .name {
+    font-size: 24pt;
+  }
+
+  .subtitle {
+    font-size: 12pt;
+  }
+
+  .heading {
+    font-size: 18pt;
+  }
+
+  .spotname{
+    font-size:18pt;
+    word-break: break-word;
+  }
+
+  .select-menu {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .slider-container {
+    flex-direction: column; /* スライダーを縦に並べる */
+    gap: 15px;
+  }
+
+  .slider-box {
+    width: 100%;
+  }
+
+  .selector {
+    flex-direction: column; /* セレクトボックスを縦に */
+    align-items: center;
+    gap: 10px;
+  }
+
+
+  .selectbox{
+    flex-direction:flex;
+  }
+
+  #generate {
+    width: 90%;
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .spot-card {
+    flex-direction: column; /* カード内を縦並び */
+    align-items: center;
+    text-align: center;
+  }
+
+  .spot-card-left {
+    width: 100%;
+  }
+
+  .spot-card-right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .spot-img {
+    width: 100%;
+    max-width: 100%; /* 幅いっぱいで表示 */
+    border-radius: 10px;
+  }
+
+  #map {
+    width: 95%;
+    height: 300px; /* 高さ少し小さく */
+  }
+
+  .travel-divider {
+    flex-direction: flex;
+  }
+
+  .travel-divider .line {
+    width: 3px;
+    height: 30px; 
+    margin: 5px 0;
+  }
+
+  .travel-time {
+    font-size: 14px;
+  }
 }
