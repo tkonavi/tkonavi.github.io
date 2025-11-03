@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded", () => {
 let spots = [];
 let startPoints = [];
 
@@ -278,4 +279,5 @@ document.getElementById("generate").addEventListener("click", async () => {
 
   document.getElementById("result").innerHTML = html;
 });
+}
 
