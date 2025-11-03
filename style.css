@@ -1,0 +1,214 @@
+body {
+  text-align: center;
+  font-family: sans-serif;
+  margin: 0;
+  background-color: white;
+  padding: 0;
+}
+
+.name {
+  font-size: 32pt;
+  color: green;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 16pt;
+  color: black;
+  line-height: 0;
+}
+
+h3 {
+  font-size: 25pt;
+  color: black;
+  line-height: 0;
+}
+
+.explain{
+  font-size:16pt;
+}
+
+p1 {
+  color: white;
+}
+p2 {
+  color: black;
+}
+
+.line {
+  width: 80%;
+  border-top: 2px solid #888;
+  margin: 30px auto;
+}
+
+#title {
+  color: white;
+}
+
+.select-menu {
+  width: 60%; /* カードの最大幅 */
+  margin: 0 auto 15px; /* 上下余白＆中央寄せ */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+}
+
+.slider-box {
+  margin: 15px 0;
+}
+
+.slider-container {
+  border-radius: 10px;
+  display: flex;
+  /* 横並びにする */
+  justify-content: center;
+  /* 中央寄せ */
+  gap: 40px;
+  /* ボックスの間隔 */
+  margin: 20px 0;
+}
+
+.selector {
+  display: flex;
+  justify-content: center; /* 横方向の中央寄せ */
+  gap: 10px; /* 要素の間に少し余白 */
+  margin-top: 20px;
+}
+
+#generate {
+  display: block;
+  margin: 20px auto;
+  /* 上下余白20px、左右中央 */
+  padding: 10px 10px;
+  /* 高さ15px、左右40pxで大きめに */
+  font-size: 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#generate:hover {
+  background-color: #4daf52;
+  /* ホバー時の色変更 */
+}
+
+#loading {
+  padding: 30px;
+  font-size: 32px;
+  color: black;
+  display: none;
+}
+
+#loading::after {
+  content: " ";
+  animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0% {
+    content: "";
+  }
+  33% {
+    content: ".";
+  }
+  66% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}
+
+#result {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 子要素（カード）を中央寄せ */
+  gap: 15px; /* カード間の余白 */
+  padding: 0 10px;
+}
+
+.spot-card {
+  display: flex;
+  max-width: 1000px; /* カードの最大幅 */
+  margin: 0 auto 15px; /* 上下余白＆中央寄せ */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px; /* カード間の余白 */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  gap: 10px;
+}
+
+.spot-card-highlight {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  gap: 30px;
+}
+
+.spot-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+
+  background-color: green;
+  line-height: 1.2;
+}
+.spot-stay {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+
+  background-color: white;
+  line-height: 1.2;
+  border: 1px solid black;
+}
+
+.spot-card-right {
+  flex-shrink: 0; /* ← 画像の幅を固定 */
+}
+
+.spot-img {
+  width: 500px; /* ← 画像サイズ調整 */
+  height: auto;
+  object-fit: cover; /* ← 枠内にきれいに収まる */
+}
+
+.travel-time {
+  text-align: center; /* 中央に表示したい場合 */
+  font-style: italic; /* イタリックにして目立たせる */
+  /* 上下の余白 */
+  color: #000000;
+}
+.travel-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.travel-divider .line {
+  width: 2px;
+  height: 40px;
+  background-color: #000000;
+  margin-right: 10px;
+}
+
+.travel-divider .travel-time {
+  font-size: 16px;
+  color: #333;
+}
+
+#map {
+  width: 80%;
+  height: 400px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
