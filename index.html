@@ -15,10 +15,10 @@
     
     
     <h1 class="name">武雄市観光ナビ</h1>
-    <h2>Produced by Takeo High School</h2>
+    <h2 class="subtitle">Produced by Takeo High School</h2>
     <div class="line"></div>
     <div id="tags"></div>
-    <h3>観光コース作成</h3>
+    <h3 class="heading">観光コース作成</h3>
     <div class="select-menu">
       <p class="explain">興味のある項目の値を大きくしてください</p>
       <!-- ユーザー入力（スライダー） -->
@@ -50,26 +50,30 @@
 
       <div class="slider-container">
         <div class="slider-box">
-          <label>金額: <span id="richVal">0</span></label
+          <label>お金をかけたい: <span id="richVal">0</span></label
           ><br />
           <input type="range" id="rich" min="0" max="3" value="0" />
         </div>
         <div class="slider-box">
-          <label>買い物: <span id="shoppingVal">0</span></label
+          <label>ショッピング: <span id="shoppingVal">0</span></label
           ><br />
           <input type="range" id="shopping" min="0" max="3" value="0" />
         </div>
       </div>
 
       <div class="selector">
+        <div class="selectbox">
         <label for="start">出発地を選んでください：</label>
-        <select id="start"></select>&nbsp;
+        <select id="start"></select>
+        </div>&nbsp;
+        <div class="selectbox">
         <label for="all-time">観光時間：</label>
         <select id="all-time">
           <option value="4">4時間</option>
           <option value="6">半日</option>
           <option value="8">一日</option>
         </select>
+      </div>
       </div>
     <div class="selector">
         
