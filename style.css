@@ -250,7 +250,7 @@ p2 {
   }
 
   .slider-container {
-    flex-direction: column; /* スライダーを縦に並べる */
+    flex-direction: flex; /* スライダーを縦に並べる */
     gap: 15px;
   }
 
@@ -314,4 +314,5 @@ p2 {
   .travel-time {
     font-size: 14px;
   }
+
 }
