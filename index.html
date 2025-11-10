@@ -6,14 +6,11 @@
     <title>武雄市観光ナビ</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
-  
-  <body>
 
-    
-    
+  <body>
     <h1 class="name">武雄市観光ナビ</h1>
     <h2 class="subtitle">Produced by Takeo High School</h2>
     <div class="line"></div>
@@ -63,21 +60,36 @@
 
       <div class="selector">
         <div class="selectbox">
-        <label for="start">出発地を選んでください：</label>
-        <select id="start"></select>
-        </div>&nbsp;
+          <label for="start">出発地を選んでください：</label>
+          <select id="start"></select>
+        </div>
+        &nbsp;
         <div class="selectbox">
-        <label for="all-time">観光時間：</label>
-        <select id="all-time">
-          <option value="4">4時間</option>
-          <option value="6">半日</option>
-          <option value="8">一日</option>
-        </select>
+          <label for="all-time">観光時間：</label>
+          <select id="all-time">
+            <option value="4">4時間</option>
+            <option value="6">半日</option>
+            <option value="8">一日</option>
+          </select>
+        </div>
       </div>
+      <div class="selector"></div>
+
+      <div class="selector">
+        <div class="selectbox">
+          <label for="budget">予算(0～)：￥</label>
+          <input
+            id="budget"
+            type="number"
+            min="1"
+            max="120"
+            step="1"
+            value="20"
+            required
+          />
+        </div>
       </div>
-    <div class="selector">
-        
-      </div>
+      <div class="selector"></div>
 
       <button id="generate">コースを作成</button>
     </div>
@@ -88,16 +100,6 @@
     <div id="result" class="result"></div>
     <div id="map"></div>
 
-   <script src="script.js"></script> 
-    
+    <script src="script.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
