@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="あなたの好みに合わせて武雄市の観光コースを自動で作成します">
     <title>武雄市観光ナビ</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -81,10 +82,10 @@
           <input
             id="budget"
             type="number"
-            min="1"
-            max="120"
-            step="1"
-            value="20"
+            min="0"
+            max="1000000"
+            step="500"
+            value="15000"
             required
           />
         </div>
