@@ -145,9 +145,14 @@ window.addEventListener("DOMContentLoaded", () => {
     else if (selected === "8") totalTimeLimit = 480;
     console.log(totalTimeLimit);
 
-    while (totalMinutes <= totalTimeLimit) {
+    const limitBudget = Number(document.getElementById("budget").value);
+    let totalBudget = 0;
+    console.log(limitBudget);
+
+    while (totalMinutes <= totalTimeLimit && totalBudget <= limitBudget) {
       spotsNumber++;
-      totalMinutes = 0; // この行はループ内で毎回リセットすると無限ループになるので注意！
+      totalMinutes = 0;
+      totalBudget = 0;
 
       // スタート地点
       const select = document.getElementById("start").value;
@@ -181,6 +186,8 @@ window.addEventListener("DOMContentLoaded", () => {
         topSpots.unshift(startSpot);
       }
 
+      console.log(topSpots);
+      
       optimized = optimizeRoute(topSpots);
       console.log("最適ルート:", optimized);
 
@@ -220,7 +227,8 @@ window.addEventListener("DOMContentLoaded", () => {
       <h3 class="spotname">${spot.name}</h3>
       <p>${spot.description}</p>
       <p>住所：${spot.address}</p>
-      <p>電話番号：${spot.tel}</p>
+      <p>電話番号：${spot.tel}</p> 
+      <p>予算：${spot.budget}円</p> 
       <p>${spot.attention}</p>
       </div>
       <div class="spot-card-right">
@@ -269,7 +277,7 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       if (latlngs.length > 1) {
-        L.polyline(latlngs, { color: "blue" }).addTo(map);
+        L.polyline(latlngs, { color: "#FF0000" }).addTo(map);
         map.fitBounds(latlngs);
       } else if (latlngs.length === 1) {
         map.setView(latlngs[0], 13);
