@@ -147,7 +147,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let totalBudget = 0;
 
-    while (totalMinutes <= totalTimeLimit && totalBudget <= limitBudget) {
+    while (totalMinutes <= totalTimeLimit) {
       spotsNumber++;
       totalMinutes = 0;
       totalBudget = 0;
@@ -297,3 +297,4 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("result").innerHTML = html;
   });
 });
+
