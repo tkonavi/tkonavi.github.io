@@ -145,9 +145,7 @@ window.addEventListener("DOMContentLoaded", () => {
     else if (selected === "8") totalTimeLimit = 480;
     console.log(totalTimeLimit);
 
-    const limitBudget = Number(document.getElementById("budget").value);
     let totalBudget = 0;
-    console.log(limitBudget);
 
     while (totalMinutes <= totalTimeLimit && totalBudget <= limitBudget) {
       spotsNumber++;
@@ -187,7 +185,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       console.log(topSpots);
-      
+
       optimized = optimizeRoute(topSpots);
       console.log("最適ルート:", optimized);
 
@@ -200,8 +198,11 @@ window.addEventListener("DOMContentLoaded", () => {
         const travelTime = estimateTravelTime(dist, "walk");
         totalMinutes += travelTime + spot.stay;
       }
-
       console.log("合計時間:", totalMinutes, "分");
+
+      totalBudget = optimized.reduce(function (sum, spot) {
+        return sum + (spot.budget || 0);
+      }, 0);
 
       // 上限を超えたらループ終了
       if (totalMinutes > totalTimeLimit) {
@@ -211,6 +212,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     let html = "<h2>おすすめコース</h2>";
+    
+    html += `<div class="total-summary">
+    <h3>合計予算：${totalBudget}円</h3>
+    <h3>合計所要時間：${totalMinutes}分</h3>
+    </div>`;
 
     for (let i = 0; i < optimized.length; i++) {
       const spot = optimized[i];
