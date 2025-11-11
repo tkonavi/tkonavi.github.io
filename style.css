@@ -24,17 +24,17 @@ body {
   line-height: 1;
 }
 
-.spotname{
+.spotname {
   font-size: 25pt;
   color: black;
   line-height: 0;
 }
 
-.explain{
-  font-size:16pt;
+.explain {
+  font-size: 16pt;
 }
 
-p1{
+p1 {
   color: white;
 }
 p2 {
@@ -138,6 +138,20 @@ p2 {
   padding: 0 10px;
 }
 
+.total-summary{
+  display: flex;
+  max-width: 1000px; /* カードの最大幅 */
+  margin: 0 auto 15px; /* 上下余白＆中央寄せ */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px; /* カード間の余白 */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  gap: 10px;
+}
+
 .spot-card {
   display: flex;
   max-width: 1000px; /* カードの最大幅 */
@@ -168,6 +182,16 @@ p2 {
   line-height: 1.2;
 }
 .spot-stay {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+
+  background-color: white;
+  line-height: 1.2;
+  border: 1px solid black;
+}
+
+.budget{
   display: inline-block;
   padding: 4px 10px;
   border-radius: 10px;
@@ -221,7 +245,6 @@ p2 {
 
 /* --- スマートフォン・縦画面対応 --- */
 @media screen and (max-width: 768px) {
-
   body {
     font-size: 14px;
     padding: 5px;
@@ -239,14 +262,14 @@ p2 {
     font-size: 18pt;
   }
 
-  .spotname{
-    font-size:18pt;
+  .spotname {
+    font-size: 18pt;
     word-break: break-word;
   }
 
   .select-menu {
     width: 90%;
-    padding: 10px;
+    padding: 5px;
   }
 
   .slider-container {
@@ -264,9 +287,8 @@ p2 {
     gap: 10px;
   }
 
-
-  .selectbox{
-    flex-direction:flex;
+  .selectbox {
+    flex-direction: flex;
   }
 
   #generate {
@@ -307,12 +329,11 @@ p2 {
 
   .travel-divider .line {
     width: 3px;
-    height: 30px; 
+    height: 30px;
     margin: 5px 0;
   }
 
   .travel-time {
     font-size: 14px;
   }
-
 }
