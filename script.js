@@ -140,9 +140,9 @@ window.addEventListener("DOMContentLoaded", () => {
     let spotsNumber = 3; //取り出す観光地数
 
     const selected = totalTimeSelect.value;
-    if (selected === "4") totalTimeLimit = 240;
-    else if (selected === "6") totalTimeLimit = 360;
-    else if (selected === "8") totalTimeLimit = 480;
+    if (selected === "4") totalTimeLimit = 210;
+    else if (selected === "6") totalTimeLimit = 330;
+    else if (selected === "8") totalTimeLimit = 450;
     console.log(totalTimeLimit);
 
     let totalBudget = 0;
@@ -212,10 +212,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     let html = "<h2>おすすめコース</h2>";
-    
+
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
     html += `<div class="total-summary">
     <h3>合計予算：${totalBudget}円</h3>
-    <h3>合計所要時間：${totalMinutes}分</h3>
+    <h3>合計所要時間：${hours}時間${minutes}分</h3>
     </div>`;
 
     for (let i = 0; i < optimized.length; i++) {
@@ -297,4 +300,3 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("result").innerHTML = html;
   });
 });
-
