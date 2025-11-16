@@ -296,6 +296,7 @@ p2 {
   }
 
   .selector {
+    font-size:18px;
     flex-direction: column; /* セレクトボックスを縦に */
     align-items: center;
     gap: 10px;
@@ -357,3 +358,4 @@ p2 {
     font-size: 14px;
   }
 }
+
