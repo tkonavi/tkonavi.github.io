@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="あなたの好みに合わせて武雄市の観光コースを自動で作成します">
+    <meta
+      name="description"
+      content="あなたの好みに合わせて武雄市の観光コースを自動で作成します"
+    />
     <title>武雄市観光ナビ</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -68,9 +71,22 @@
         <div class="selectbox">
           <label for="all-time">観光時間：</label>
           <select id="all-time">
-            <option value="4">4時間</option>
-            <option value="6">半日</option>
-            <option value="8">一日</option>
+            <option value="0">4時間</option>
+            <option value="1">半日</option>
+            <option value="2">一日</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="selector">
+        <div class="selectbox">
+          <label for="move">移動方法：</label>
+          <select id="move">
+            <option value="0">徒歩</option>
+            <!--
+            <option value="1">自転車</option>
+            <option value="2">車</option>
+            -->
           </select>
         </div>
       </div>
@@ -87,4 +103,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
