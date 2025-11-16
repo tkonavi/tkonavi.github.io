@@ -1,134 +1,120 @@
 body {
   text-align: center;
-  font-family: sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   margin: 0;
-  background-color: white;
   padding: 0;
+  background-color: white;
+  color: #000000;
+}
+
+/* 背景調整 */
+.first {
+  background-color: white;
+}
+
+.second {
+  background-color: #F2F2F2;
 }
 
 .name {
-  font-size: 48px;
+  font-size: 50px;
+  
   color: green;
-  font-weight: bold;
+  
 }
 
 .subtitle {
   font-size: 30px;
-  color: black;
-  line-height: 0;
+  color: #000000;
+  margin-top: -20px;
 }
 
 .heading {
-  font-size: 28px;
-  color: black;
-  line-height: 1;
-}
-
-.spotname {
-  font-size: 24px;
-  color: black;
-  line-height: 0;
+  font-size: 30px;
+  color: #000000;
+  margin: 20px 0 10px;
 }
 
 .explain {
-  font-size: 24px;
-}
-
-h2 {
-  fontsize: 24px;
-  margin: 0px;
-}
-
-p1 {
-  color: white;
-}
-p2 {
-  color: black;
+  font-size: 26px;
+  color: #000000;
 }
 
 .line {
   width: 80%;
-  border-top: 2px solid #888;
+  border-top: 2px solid #aaa;
   margin: 30px auto;
 }
 
-#title {
-  color: white;
-}
-
-.select-menu {
-  width: 60%; /* カードの最大幅 */
-  margin: 0 auto 15px; /* 上下余白＆中央寄せ */
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  gap: 10px;
-}
-
-.slider-box {
-  margin: 15px 0;
-}
-
 .slider-container {
-  font-size: 20px;
-  border-radius: 10px;
+  font-size:20px;
   display: flex;
-  /* 横並びにする */
   justify-content: center;
-  /* 中央寄せ */
-  gap: 40px;
-  /* ボックスの間隔 */
+  gap: 100px;
   margin: 20px 0;
 }
 
-.selector {
-  font-size: 20px;
+.select-menu {
+  font-size:20px;
+  width: 70%;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
   display: flex;
-  justify-content: center; /* 横方向の中央寄せ */
-  gap: 10px; /* 要素の間に少し余白 */
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 15px;
 }
 
-#start,
-#all-time,
-#move {
-  font-size: 16px;
-  height: 22px;
+select {
+  padding: 8px 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+select:focus {
+  border-color: #2e7d32;
 }
 
 #generate {
-  display: block;
+  font-size:26px;
   margin: 20px auto;
-  /* 上下余白20px、左右中央 */
-  padding: 10px 10px;
-  /* 高さ15px、左右40pxで大きめに */
-  font-size: 26px;
-  background-color: green;
+  padding: 12px 24px;
+  font-size: 24px;
+  background-color: #2e7d32;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: 0.25s;
 }
 
 #generate:hover {
-  background-color: #4daf52;
-  /* ホバー時の色変更 */
+  background-color: #256628;
+  transform: translateY(-2px);
 }
 
+/* ================================
+   ローディング
+================================ */
 #loading {
   padding: 30px;
-  font-size: 32px;
-  color: black;
+  font-size: 30px;
+  color: #000000;
   display: none;
 }
 
+/* ドットアニメーション */
 #loading::after {
   content: " ";
   animation: dots 1.2s steps(3, end) infinite;
 }
-
 @keyframes dots {
   0% {
     content: "";
@@ -144,93 +130,87 @@ p2 {
   }
 }
 
+/* ================================
+   結果表示（カード一覧）
+================================ */
 #result {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 子要素（カード）を中央寄せ */
-  gap: 15px; /* カード間の余白 */
-  padding: 0 10px;
-}
-
-.total-summary {
-  display: flex;
-  max-width: 1000px; /* カードの最大幅 */
-  margin: 0 auto 15px; /* 上下余白＆中央寄せ */
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px; /* カード間の余白 */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  gap: 10px;
-}
-
-.spot-card {
-  display: flex;
-  max-width: 1000px; /* カードの最大幅 */
-  margin: 0 auto 15px; /* 上下余白＆中央寄せ */
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px; /* カード間の余白 */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  gap: 10px;
-}
-
-.spot-card-highlight {
-  display: flex;
   align-items: center;
-  margin-top: 0;
-  gap: 30px;
+  gap: 18px;
+  padding: 10px;
+}
+
+/* 要約カード */
+.total-summary {
+  width: 90%;
+  max-width: 950px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+/* 各スポットカード */
+.spot-card {
+  width: 90%;
+  max-width: 950px;
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  display: flex;
+  gap: 15px;
+  border: 1px solid #e5e5e5;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.25s;
+}
+
+.spot-card:hover {
+  transform: translateY(-3px);
+}
+
+/* カード内コンテンツ */
+.spot-card-left {
+  flex: 1;
+}
+
+/* タグ類 */
+.spot-tag,
+.spot-stay,
+.budget {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-right: 5px;
 }
 
 .spot-tag {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 10px;
-
-  background-color: green;
-  line-height: 1.2;
-}
-.spot-stay {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 10px;
-
-  background-color: white;
-  line-height: 1.2;
-  border: 1px solid black;
+  background-color: #2e7d32;
+  color: white;
 }
 
+.spot-stay,
 .budget {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 10px;
-
-  background-color: white;
-  line-height: 1.2;
-  border: 1px solid black;
+  background-color: #fff;
+  border: 1px solid #555;
 }
 
+/* 画像部分 */
 .spot-card-right {
-  flex-shrink: 0; /* ← 画像の幅を固定 */
+  flex-shrink: 0;
 }
 
 .spot-img {
-  width: 500px; /* ← 画像サイズ調整 */
+  width: 450px;
   height: auto;
-  object-fit: cover; /* ← 枠内にきれいに収まる */
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-.travel-time {
-  text-align: center; /* 中央に表示したい場合 */
-  font-style: italic; /* イタリックにして目立たせる */
-  /* 上下の余白 */
-  color: #000000;
-}
 .travel-divider {
   display: flex;
   align-items: center;
@@ -245,133 +225,52 @@ p2 {
   margin-right: 10px;
 }
 
-.travel-time {
-  font-size: 16px;
-  color: black;
-}
-
+/* ================================
+   地図
+================================ */
 #map {
   width: 80%;
-  height: 400px;
+  height: 420px;
   margin: 20px auto;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* --- スマートフォン・縦画面対応 --- */
+/* ================================
+   スマホ対応
+================================ */
 @media screen and (max-width: 768px) {
   .name {
-    font-size: 40px;
+    font-size: 38px;
   }
 
   .subtitle {
-    font-size: 20px;
-  }
-
-  .heading {
-    font-size: 24px;
-  }
-
-  .explain {
     font-size: 18px;
-  }
-
-  .spotname {
-    font-size: 18px;
-    word-break: break-word;
+    margin-top: -5px;
   }
 
   .select-menu {
     width: 90%;
-    padding: 5px;
-  }
-
-  .slider-container {
-    font-size: 18px;
-    flex-direction: flex; /* スライダーを縦に並べる */
-    gap: 15px;
-  }
-
-  .slider-box {
-    width: 100%;
-  }
-
-  .selector {
-    font-size: 18px;
-    flex-direction: column; /* セレクトボックスを縦に */
-    align-items: center;
-    gap: 10px;
-  }
-
-  .selectbox {
-    fontsize: 16px;
-    flex-direction: flex;
-  }
-
-  #start,
-  #all-time,
-  #move {
-    font-size: 14px;
-    height: 18px;
+    padding: 12px;
   }
 
   #generate {
     width: 90%;
-    font-size: 22px;
-    padding: 10px;
-  }
-
-  .total-summary {
-    display: column;
-    max-width: 1000px; /* カードの最大幅 */
-    margin: 0 auto 15px; /* 上下余白＆中央寄せ */
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px; /* カード間の余白 */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    gap: 10px;
-    font-size: 14px;
+    font-size: 20px;
   }
 
   .spot-card {
-    flex-direction: column; /* カード内を縦並び */
-    align-items: center;
-    text-align: center;
-  }
-
-  .spot-card-left {
-    width: 100%;
-  }
-
-  .spot-card-right {
-    width: 100%;
+    flex-direction: column;
     text-align: center;
   }
 
   .spot-img {
     width: 100%;
-    max-width: 100%; /* 幅いっぱいで表示 */
     border-radius: 10px;
   }
 
   #map {
-    width: 95%;
-    height: 300px; /* 高さ少し小さく */
-  }
-
-  .travel-divider {
-    flex-direction: flex;
-  }
-
-  .travel-divider .line {
-    width: 2px;
-    height: 30px;
-    margin: 10px 0;
-  }
-
-  .travel-time {
-    font-size: 14px;
+    width: 92%;
+    height: 300px;
   }
 }
