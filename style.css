@@ -91,6 +91,11 @@ p2 {
   margin-top: 20px;
 }
 
+#start,#all-time,#move{
+  font-size:16px;
+  height:22px;
+}
+
 #generate {
   display: block;
   margin: 20px auto;
@@ -266,7 +271,7 @@ p2 {
   }
   
   .explain {
-  font-size: 20px;
+  font-size: 18px;
 }
 
   .spotname {
@@ -300,6 +305,11 @@ p2 {
     fontsize:16px;
     flex-direction: flex;
   }
+  
+  #start,#all-time,#move{
+  font-size:14px;
+  height:18px;
+}
 
   #generate {
     width: 90%;
