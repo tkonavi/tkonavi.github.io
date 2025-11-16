@@ -212,7 +212,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     let html = "<h2>おすすめコース</h2>";
-    html += "<h2>COURSE</h2>";
 
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
@@ -304,3 +303,4 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("result").innerHTML = html;
   });
 });
+
