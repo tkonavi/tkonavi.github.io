@@ -2,9 +2,11 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description"content="好みに合わせて武雄市の観光コースを自動で作成します"
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="あなたの好みに合わせて武雄市の観光コースを自動で作成します"
+    />
     <title>武雄市観光ナビ</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -13,92 +15,94 @@
   </head>
 
   <body>
-    <h1 class="name">武雄市観光ナビ</h1>
-    <h2 class="subtitle">Produced by Takeo High School</h2>
-    <div class="line"></div>
-    <div id="tags"></div>
-    <h3 class="heading">観光コース作成</h3>
-    <div class="select-menu">
-      <p class="explain">興味のある項目の値を大きくしてください</p>
-      <!-- ユーザー入力（スライダー） -->
-      <div class="slider-container">
-        <div class="slider-box">
-          <label>自然: <span id="natureVal">0</span></label
-          ><br />
-          <input type="range" id="nature" min="0" max="3" value="0" />
+    <div class="first">
+      <h1 class="name">武雄市観光ナビ</h1>
+      <h2 class="subtitle">Produced by Takeo High School</h2>
+      <div class="line"></div>
+      <div id="tags"></div>
+      <h3 class="heading">観光コース作成</h3>
+      <div class="select-menu">
+        <p class="explain">興味のある項目の値を大きくしてください</p>
+        <!-- ユーザー入力（スライダー） -->
+        <div class="slider-container">
+          <div class="slider-box">
+            <label>自然: <span id="natureVal">0</span></label
+            ><br />
+            <input type="range" id="nature" min="0" max="3" value="0" />
+          </div>
+          <div class="slider-box">
+            <label>歴史・文化: <span id="cultureVal">0</span></label
+            ><br />
+            <input type="range" id="culture" min="0" max="3" value="0" />
+          </div>
         </div>
-        <div class="slider-box">
-          <label>歴史・文化: <span id="cultureVal">0</span></label
-          ><br />
-          <input type="range" id="culture" min="0" max="3" value="0" />
-        </div>
-      </div>
 
-      <div class="slider-container">
-        <div class="slider-box">
-          <label>体験: <span id="activityVal">0</span></label
-          ><br />
-          <input type="range" id="activity" min="0" max="3" value="0" />
+        <div class="slider-container">
+          <div class="slider-box">
+            <label>体験: <span id="activityVal">0</span></label
+            ><br />
+            <input type="range" id="activity" min="0" max="3" value="0" />
+          </div>
+          <div class="slider-box">
+            <label>食事: <span id="gourmetVal">0</span></label
+            ><br />
+            <input type="range" id="gourmet" min="0" max="3" value="0" />
+          </div>
         </div>
-        <div class="slider-box">
-          <label>食事: <span id="gourmetVal">0</span></label
-          ><br />
-          <input type="range" id="gourmet" min="0" max="3" value="0" />
-        </div>
-      </div>
 
-      <div class="slider-container">
-        <div class="slider-box">
-          <label>アート: <span id="artVal">0</span></label
-          ><br />
-          <input type="range" id="art" min="0" max="3" value="0" />
+        <div class="slider-container">
+          <div class="slider-box">
+            <label>アート: <span id="artVal">0</span></label
+            ><br />
+            <input type="range" id="art" min="0" max="3" value="0" />
+          </div>
+          <div class="slider-box">
+            <label>ショッピング: <span id="shoppingVal">0</span></label
+            ><br />
+            <input type="range" id="shopping" min="0" max="3" value="0" />
+          </div>
         </div>
-        <div class="slider-box">
-          <label>ショッピング: <span id="shoppingVal">0</span></label
-          ><br />
-          <input type="range" id="shopping" min="0" max="3" value="0" />
-        </div>
-      </div>
 
-      <div class="selector">
-        <div class="selectbox">
-          <label for="start">出発地を選んでください：</label>
-          <select id="start"></select>
+        <div class="selector">
+          <div class="selectbox">
+            <label for="start">出発地を選んでください：</label>
+            <select id="start"></select>
+          </div>
+          &nbsp;
+          <div class="selectbox">
+            <label for="all-time">観光時間：</label>
+            <select id="all-time">
+              <option value="0">4時間</option>
+              <option value="1">半日</option>
+              <option value="2">一日</option>
+            </select>
+          </div>
         </div>
-        &nbsp;
-        <div class="selectbox">
-          <label for="all-time">観光時間：</label>
-          <select id="all-time">
-            <option value="0">4時間</option>
-            <option value="1">半日</option>
-            <option value="2">一日</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="selector">
-        <div class="selectbox">
-          <label for="move">移動方法：</label>
-          <select id="move">
-            <option value="0">徒歩</option>
-            <!--
+        <div class="selector">
+          <div class="selectbox">
+            <label for="move">移動方法：</label>
+            <select id="move">
+              <option value="0">徒歩</option>
+              <!--
             <option value="1">自転車</option>
             <option value="2">車</option>
-            -->
-          </select>
+            --></select>
+          </div>
         </div>
-      </div>
 
-      <button id="generate">コースを作成</button>
+        <button id="generate">コースを作成</button>
+      </div>
     </div>
 
-    <div id="loading" style="display: none;">コースを作成中です</div>
+      <div id="loading" style="display: none;">コースを作成中です</div>
 
-    <!-- 結果表示 -->
-    <div id="result" class="result"></div>
-    <div id="map"></div>
+      <!-- 結果表示 -->
+    <div class=second>
+      <div id="result" class="result"></div>
+      <div id="map"></div>
+      </div>
 
     <script src="script.js"></script>
   </body>
 </html>
-
