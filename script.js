@@ -1,6 +1,10 @@
 window.addEventListener("DOMContentLoaded", () => {
   let spots = [];
   let startPoints = [];
+  let orsData;
+  let optimized = [];
+  let coords=[];
+  let latlngs=[];
 
   fetch("spots.json")
     .then((response) => response.json())
@@ -97,33 +101,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // ORSで移動時間を取得
   async function getTravelTimeORS(origin, destination) {
-    const body = {
-      coordinates: [
-        [origin.lng, origin.lat], // ORSは [lng, lat]
-        [destination.lng, destination.lat],
-      ],
-    };
+
+    const start = [origin.lng,origin.lat];
+    const end = [destination.lng,destination.lat];
 
     const response = await fetch(
-      "https://api.openrouteservice.org/v2/directions/foot-walking",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, application/geo+json",
-          "Content-Type": "application/json",
-          Authorization: orsApiKey,
-        },
-        body: JSON.stringify(body),
-      }
+      `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=${orsApiKey}&start=${start}&end=${end}`
     );
-    const data = await response.json();
-    console.log(data);
 
-    if (data.routes && data.routes.length > 0) {
-      const durationSec = data.routes[0].summary.duration; // routes 配下の summary
+    orsData = await response.json();
+    console.log("データ", orsData);
+    coords = orsData.features[0].geometry.coordinates;
+    latlngs.push(coords.map(coord => [coord[1], coord[0]]));
+
+    if (orsData.features) {
+      const durationSec = orsData.features[0].properties.summary.duration;
       return Math.round(durationSec / 60); // 分
     } else {
-      return null;
+      return;
     }
   }
 
@@ -131,8 +126,6 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("generate").addEventListener("click", async () => {
     const loading = document.getElementById("loading");
     loading.style.display = "block";
-
-    let optimized = [];
 
     const totalTimeSelect = document.getElementById("all-time");
     let totalTimeLimit = 240; // デフォルト240分
@@ -212,6 +205,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     let html = "<h2>おすすめコース</h2>";
+    html += "<h2>COURSE</h2>";
 
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
@@ -230,7 +224,7 @@ window.addEventListener("DOMContentLoaded", () => {
       <p1>${spot.tag}</p1>
       </div>
       <div class="spot-stay">
-      <p2>所要時間${spot.stay}分</p2>
+      <p2>観光時間${spot.stay}分</p2>
       </div>
       </div>
       <h3 class="spotname">${spot.name}</h3>
@@ -254,6 +248,9 @@ window.addEventListener("DOMContentLoaded", () => {
         </div>`;
       }
     }
+
+    //map生成↓
+
     // Leafletマップ初期化（初回のみ）
     let map;
     function initMap() {
@@ -275,18 +272,20 @@ window.addEventListener("DOMContentLoaded", () => {
     function showMap(course) {
       initMap();
 
-      const latlngs = [];
+      
+      
+      console.log(coords);
+      
       course.forEach((spot, i) => {
-        if (spot.lat && spot.lng) {
-          const marker = L.marker([spot.lat, spot.lng])
-            .addTo(map)
-            .bindPopup(`<b>${i + 1}. ${spot.name}</b><br>${spot.description}`);
-          latlngs.push([spot.lat, spot.lng]);
-        }
+        const marker = L.marker([spot.lat, spot.lng])
+          .addTo(map)
+          .bindPopup(`<b>${i + 1}. ${spot.name}</b><br>${spot.description}`);
+        coords = orsData.features[0].geometry.coordinates;
+        latlngs.push(coords.map(coord => [coord[1], coord[0]]));
       });
 
       if (latlngs.length > 1) {
-        L.polyline(latlngs, { color: "#FF0000" }).addTo(map);
+        L.polyline(latlngs, { color: "blue" }).addTo(map);
         map.fitBounds(latlngs);
       } else if (latlngs.length === 1) {
         map.setView(latlngs[0], 13);
