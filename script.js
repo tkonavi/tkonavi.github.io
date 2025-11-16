@@ -3,8 +3,9 @@ window.addEventListener("DOMContentLoaded", () => {
   let startPoints = [];
   let orsData;
   let optimized = [];
-  let coords=[];
-  let latlngs=[];
+  let coords = [];
+  let latlngs = [];
+  let profile = "foot-walking";
 
   fetch("spots.json")
     .then((response) => response.json())
@@ -101,18 +102,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // ORSで移動時間を取得
   async function getTravelTimeORS(origin, destination) {
-
-    const start = [origin.lng,origin.lat];
-    const end = [destination.lng,destination.lat];
+    const start = [origin.lng, origin.lat];
+    const end = [destination.lng, destination.lat];
 
     const response = await fetch(
-      `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=${orsApiKey}&start=${start}&end=${end}`
+      `https://api.openrouteservice.org/v2/directions/${profile}?api_key=${orsApiKey}&start=${start}&end=${end}`
     );
 
     orsData = await response.json();
     console.log("データ", orsData);
     coords = orsData.features[0].geometry.coordinates;
-    latlngs.push(coords.map(coord => [coord[1], coord[0]]));
+    latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
 
     if (orsData.features) {
       const durationSec = orsData.features[0].properties.summary.duration;
@@ -132,11 +132,18 @@ window.addEventListener("DOMContentLoaded", () => {
     let totalMinutes = 0; //トータル観光所要時間
     let spotsNumber = 3; //取り出す観光地数
 
+    const move = document.getElementById("move");
+
     const selected = totalTimeSelect.value;
-    if (selected === "4") totalTimeLimit = 210;
-    else if (selected === "6") totalTimeLimit = 330;
-    else if (selected === "8") totalTimeLimit = 450;
+    if (selected === "0") totalTimeLimit = 210;
+    else if (selected === "1") totalTimeLimit = 330;
+    else if (selected === "2") totalTimeLimit = 450;
     console.log(totalTimeLimit);
+
+    const howToMove = move.value;
+    if (howToMove === "0") profile = "foot-walking";
+    else if (howToMove === "1") profile = "cycling-regular";
+    else if (howToMove === "2") profile = "driving-car";
 
     let totalBudget = 0;
 
@@ -272,16 +279,14 @@ window.addEventListener("DOMContentLoaded", () => {
     function showMap(course) {
       initMap();
 
-      
-      
       console.log(coords);
-      
+
       course.forEach((spot, i) => {
         const marker = L.marker([spot.lat, spot.lng])
           .addTo(map)
           .bindPopup(`<b>${i + 1}. ${spot.name}</b><br>${spot.description}`);
         coords = orsData.features[0].geometry.coordinates;
-        latlngs.push(coords.map(coord => [coord[1], coord[0]]));
+        latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
       });
 
       if (latlngs.length > 1) {
