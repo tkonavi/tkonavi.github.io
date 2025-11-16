@@ -34,9 +34,9 @@ body {
   font-size: 24px;
 }
 
-h2{
-  fontsize:24px;
-  margin:0px;
+h2 {
+  fontsize: 24px;
+  margin: 0px;
 }
 
 p1 {
@@ -72,7 +72,7 @@ p2 {
 }
 
 .slider-container {
-  font-size:20px;
+  font-size: 20px;
   border-radius: 10px;
   display: flex;
   /* 横並びにする */
@@ -84,16 +84,18 @@ p2 {
 }
 
 .selector {
-  font-size:20px;
+  font-size: 20px;
   display: flex;
   justify-content: center; /* 横方向の中央寄せ */
   gap: 10px; /* 要素の間に少し余白 */
   margin-top: 20px;
 }
 
-#start,#all-time,#move{
-  font-size:16px;
-  height:22px;
+#start,
+#all-time,
+#move {
+  font-size: 16px;
+  height: 22px;
 }
 
 #generate {
@@ -150,7 +152,7 @@ p2 {
   padding: 0 10px;
 }
 
-.total-summary{
+.total-summary {
   display: flex;
   max-width: 1000px; /* カードの最大幅 */
   margin: 0 auto 15px; /* 上下余白＆中央寄せ */
@@ -203,7 +205,7 @@ p2 {
   border: 1px solid black;
 }
 
-.budget{
+.budget {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 10px;
@@ -257,7 +259,6 @@ p2 {
 
 /* --- スマートフォン・縦画面対応 --- */
 @media screen and (max-width: 768px) {
-
   .name {
     font-size: 40px;
   }
@@ -269,24 +270,23 @@ p2 {
   .heading {
     font-size: 24px;
   }
-  
+
   .explain {
-  font-size: 18px;
-}
+    font-size: 18px;
+  }
 
   .spotname {
     font-size: 18px;
     word-break: break-word;
   }
-  
-  
+
   .select-menu {
     width: 90%;
     padding: 5px;
   }
 
   .slider-container {
-    font-size:18px;
+    font-size: 18px;
     flex-direction: flex; /* スライダーを縦に並べる */
     gap: 15px;
   }
@@ -296,26 +296,43 @@ p2 {
   }
 
   .selector {
-    font-size:18px;
+    font-size: 18px;
     flex-direction: column; /* セレクトボックスを縦に */
     align-items: center;
     gap: 10px;
   }
 
   .selectbox {
-    fontsize:16px;
+    fontsize: 16px;
     flex-direction: flex;
   }
-  
-  #start,#all-time,#move{
-  font-size:14px;
-  height:18px;
-}
+
+  #start,
+  #all-time,
+  #move {
+    font-size: 14px;
+    height: 18px;
+  }
 
   #generate {
     width: 90%;
     font-size: 22px;
     padding: 10px;
+  }
+
+  .total-summary {
+    display: column;
+    max-width: 1000px; /* カードの最大幅 */
+    margin: 0 auto 15px; /* 上下余白＆中央寄せ */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px; /* カード間の余白 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    gap: 10px;
+    font-size: 14px;
   }
 
   .spot-card {
@@ -349,14 +366,12 @@ p2 {
   }
 
   .travel-divider .line {
-    width: 3px;
+    width: 2px;
     height: 30px;
-    margin: 5px 0;
+    margin: 10px 0;
   }
 
   .travel-time {
     font-size: 14px;
   }
 }
-
-
