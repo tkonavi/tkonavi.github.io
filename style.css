@@ -168,16 +168,10 @@ select:focus {
   transition: 0.25s;
 }
 
-.spot-card:hover {
-  transform: translateY(-3px);
-}
-
-/* カード内コンテンツ */
 .spot-card-left {
   flex: 1;
 }
 
-/* タグ類 */
 .spot-tag,
 .spot-stay,
 .budget {
@@ -236,9 +230,8 @@ select:focus {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* ================================
-   スマホ対応
-================================ */
+
+/*スマホ用*/
 @media screen and (max-width: 768px) {
   .name {
     font-size: 38px;
@@ -248,7 +241,11 @@ select:focus {
     font-size: 18px;
     margin-top: -5px;
   }
-
+  
+  .slider-container{
+    gap:50px;
+  }
+  
   .select-menu {
     width: 90%;
     padding: 12px;
