@@ -124,6 +124,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // コース生成
   document.getElementById("generate").addEventListener("click", async () => {
+    latlngs = [];
+    coords = [];
     const loading = document.getElementById("loading");
     loading.style.display = "block";
 
