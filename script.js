@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const selectors = ["station"];
 
-  // 緯度経度から距離を計算（Haversine式）
+  // 緯度経度から距離を計算
   function getDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // 地球半径(km)
     const toRad = (deg) => (deg * Math.PI) / 180;
@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
     return R * c; // km
   }
 
-  // 最短ルートを決める（貪欲法）
+  // 最短ルートを決める（貪欲法
   function optimizeRoute(spots) {
     //if (spots.length <= 1) return spots;
 
@@ -89,18 +89,18 @@ window.addEventListener("DOMContentLoaded", () => {
     return visited;
   }
 
-  //距離を簡易的にはかる(orsへの負担軽減)
+  //距離をはかる
   function estimateTravelTime(distanceKm, mode = "walk") {
     const speed = mode === "walk" ? 4 : mode === "car" ? 30 : 15; // km/h
     const hours = distanceKm / speed;
     return Math.round(hours * 60);
   }
 
-  //自分のAPIキー
+  //APIkey
   const orsApiKey =
     "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjdjODA5OWI0MWQ3MzQ4YTZhNGU5ODE2ZjZlZThiNWIxIiwiaCI6Im11cm11cjY0In0=";
 
-  // ORSで移動時間を取得
+  // 移動時間(ors)
   async function getTravelTimeORS(origin, destination) {
     const start = [origin.lng, origin.lat];
     const end = [destination.lng, destination.lat];
@@ -255,7 +255,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    //map生成↓
+    //以下map生成
 
     // Leafletマップ初期化（初回のみ）
     let map;
@@ -303,4 +303,3 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("result").innerHTML = html;
   });
 });
-
