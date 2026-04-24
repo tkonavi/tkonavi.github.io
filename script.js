@@ -112,7 +112,7 @@ window.addEventListener("DOMContentLoaded", () => {
     orsData = await response.json();
     console.log("データ", orsData);
     coords = orsData.features[0].geometry.coordinates;
-    latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
+    latlngs.push(...coords.map((coord) => [coord[1], coord[0]]));
 
     if (orsData.features) {
       const durationSec = orsData.features[0].properties.summary.duration;
@@ -147,7 +147,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let totalBudget = 0;
 
-    while (totalMinutes <= totalTimeLimit) {
+    for (let i = 0; i < 20 && totalMinutes <= totalTimeLimit; i++) {
       spotsNumber++;
       totalMinutes = 0;
       totalBudget = 0;
@@ -227,10 +227,10 @@ window.addEventListener("DOMContentLoaded", () => {
       <div class="spot-card-left">
       <div class="spot-card-highlight">
       <div class="spot-tag">
-      <p1>${spot.tag}</p1>
+      <span>${spot.tag}</span>
       </div>
       <div class="spot-stay">
-      <p2>観光時間${spot.stay}分</p2>
+      <span>観光時間${spot.stay}分</span>
       </div>
       </div>
       <h3 class="spotname">${spot.name}</h3>
@@ -284,8 +284,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const marker = L.marker([spot.lat, spot.lng])
           .addTo(map)
           .bindPopup(`<b>${i + 1}. ${spot.name}</b><br>${spot.description}`);
-        coords = orsData.features[0].geometry.coordinates;
-        latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
       });
 
       if (latlngs.length > 1) {
