@@ -3,17 +3,23 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: rgba(255,255,255,0.5);
   color: #000000;
+  background-image:url("/img/background.jpg");
+   background-position: top center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
 }
 
 /* 背景調整 */
 .first {
-  background-color: white;
+  background-color: rgba(255,255,255,0.5);
+  
 }
 
 .second {
-  background-color: #F2F2F2;
+  background-color: rgba(255,255,255,0.5);
 }
 
 .name {
@@ -58,7 +64,8 @@ body {
   font-size:20px;
   width: 70%;
   margin: 20px auto;
-  background-color: #ffffff;
+  background-color: rgba(255,255,255,0.7);
+  opacity: 0.7;
   border-radius: 14px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
