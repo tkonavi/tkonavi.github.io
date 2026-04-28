@@ -5,7 +5,7 @@ body {
   padding: 0;
   background-color: rgba(255,255,255,0.5);
   color: #000000;
-  background-image:url("/img/background.jpg");
+  background-image:url("background.jpg");
    background-position: top center;
    background-repeat: no-repeat;
    background-size: cover;
