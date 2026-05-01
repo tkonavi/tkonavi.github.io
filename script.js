@@ -124,8 +124,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // コース生成
   document.getElementById("generate").addEventListener("click", async () => {
-    latlngs = [];
+    spots = [];
+    startPoints = [];
+    optimized = [];
     coords = [];
+    latlngs = [];
+    profile = "foot-walking";
     const loading = document.getElementById("loading");
     loading.style.display = "block";
 
