@@ -31,8 +31,9 @@ li {
 a {
   display : block;
   text-decoration : none;
+  text-size : 20px
   color : white;
-  margin-right : 35px;
+  margin-right : 15px;
 }
 
 /* 背景調整 */
