@@ -288,8 +288,8 @@ window.addEventListener("DOMContentLoaded", () => {
         const marker = L.marker([spot.lat, spot.lng])
           .addTo(map)
           .bindPopup(`<b>${i + 1}. ${spot.name}</b><br>${spot.description}`);
-        coords = orsData.features[0].geometry.coordinates;
-        latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
+        //coords = orsData.features[0].geometry.coordinates;
+        //latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
       });
 
       if (latlngs.length > 1) {
