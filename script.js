@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const selectors = ["station"];
 
-  // 緯度経度から距離を計算
+  // 緯度経度から距離を計算（Haversine式）
   function getDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // 地球半径(km)
     const toRad = (deg) => (deg * Math.PI) / 180;
@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
     return R * c; // km
   }
 
-  // 最短ルートを決める（貪欲法
+  // 最短ルートを決める（貪欲法）
   function optimizeRoute(spots) {
     //if (spots.length <= 1) return spots;
 
@@ -89,18 +89,18 @@ window.addEventListener("DOMContentLoaded", () => {
     return visited;
   }
 
-  //距離をはかる
+  //距離を簡易的にはかる(orsへの負担軽減)
   function estimateTravelTime(distanceKm, mode = "walk") {
     const speed = mode === "walk" ? 4 : mode === "car" ? 30 : 15; // km/h
     const hours = distanceKm / speed;
     return Math.round(hours * 60);
   }
 
-  //APIkey
+  //自分のAPIキー
   const orsApiKey =
     "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjdjODA5OWI0MWQ3MzQ4YTZhNGU5ODE2ZjZlZThiNWIxIiwiaCI6Im11cm11cjY0In0=";
 
-  // 移動時間(ors)
+  // ORSで移動時間を取得
   async function getTravelTimeORS(origin, destination) {
     const start = [origin.lng, origin.lat];
     const end = [destination.lng, destination.lat];
@@ -112,7 +112,7 @@ window.addEventListener("DOMContentLoaded", () => {
     orsData = await response.json();
     console.log("データ", orsData);
     coords = orsData.features[0].geometry.coordinates;
-    latlngs.push(...coords.map((coord) => [coord[1], coord[0]]));
+    latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
 
     if (orsData.features) {
       const durationSec = orsData.features[0].properties.summary.duration;
@@ -124,12 +124,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // コース生成
   document.getElementById("generate").addEventListener("click", async () => {
-    spots = [];
-    startPoints = [];
-    optimized = [];
-    coords = [];
-    latlngs = [];
-    profile = "foot-walking";
     const loading = document.getElementById("loading");
     loading.style.display = "block";
 
@@ -153,7 +147,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let totalBudget = 0;
 
-    for (let i = 0; i < 20 && totalMinutes <= totalTimeLimit; i++) {
+    while (totalMinutes <= totalTimeLimit) {
       spotsNumber++;
       totalMinutes = 0;
       totalBudget = 0;
@@ -233,10 +227,10 @@ window.addEventListener("DOMContentLoaded", () => {
       <div class="spot-card-left">
       <div class="spot-card-highlight">
       <div class="spot-tag">
-      <span>${spot.tag}</span>
+      <p1>${spot.tag}</p1>
       </div>
       <div class="spot-stay">
-      <span>観光時間${spot.stay}分</span>
+      <p2>観光時間${spot.stay}分</p2>
       </div>
       </div>
       <h3 class="spotname">${spot.name}</h3>
@@ -261,7 +255,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    //以下map生成
+    //map生成↓
 
     // Leafletマップ初期化（初回のみ）
     let map;
@@ -290,6 +284,8 @@ window.addEventListener("DOMContentLoaded", () => {
         const marker = L.marker([spot.lat, spot.lng])
           .addTo(map)
           .bindPopup(`<b>${i + 1}. ${spot.name}</b><br>${spot.description}`);
+        coords = orsData.features[0].geometry.coordinates;
+        latlngs.push(coords.map((coord) => [coord[1], coord[0]]));
       });
 
       if (latlngs.length > 1) {
