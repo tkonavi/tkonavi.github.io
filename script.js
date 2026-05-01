@@ -127,6 +127,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const loading = document.getElementById("loading");
     loading.style.display = "block";
 
+    latlngs = [];
+    coords = [];
+    orsData = null;
+
     const totalTimeSelect = document.getElementById("all-time");
     let totalTimeLimit = 240; // デフォルト240分
     let totalMinutes = 0; //トータル観光所要時間
