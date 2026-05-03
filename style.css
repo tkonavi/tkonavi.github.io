@@ -13,6 +13,7 @@ body {
 }
 
 nav{
+  text-align : center;
   width : 100%;
   height : 50px;
   background-color : green;
